@@ -5,20 +5,31 @@ package com.example;
  */
 public class App {
 
-    // Issue 1: Unused variable
-    private static String unused = "not used";
-    
-    // Issue 2: Magic number
+    // Constants to replace magic numbers
+    private static final int DISCOUNT_PERCENTAGE = 10;
+    private static final int PERCENTAGE_DIVISOR = 100;
+
+    /**
+     * Calculates discount on price
+     * @param price the original price
+     * @return discounted amount
+     */
     public int calculateDiscount(int price) {
-        return price * 10 / 100;  // Magic number 10, 100
-    }
-    
-    // Issue 3: Missing null check
-    public String formatName(String name) {
-        return name.toUpperCase();  // Could throw NPE
+        return price * DISCOUNT_PERCENTAGE / PERCENTAGE_DIVISOR;
     }
 
-    
+    /**
+     * Formats name to uppercase
+     * @param name the name to format
+     * @return formatted name in uppercase, or empty string if name is null/empty
+     */
+    public String formatName(String name) {
+        if (name == null || name.isEmpty()) {
+            return "";
+        }
+        return name.toUpperCase();
+    }
+
     /**
      * Adds two numbers
      * @param a first number
@@ -93,4 +104,3 @@ public class App {
         System.out.println("5 / 3 = " + app.divide(5, 3));
     }
 }
-
